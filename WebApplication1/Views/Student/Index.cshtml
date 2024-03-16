@@ -1,0 +1,48 @@
+﻿@model List<Student>
+@{
+    var val = DateTime.Now.ToShortDateString();
+}
+
+<h1>Список студентов на @val</h1>
+<div class="row ">
+    <div class="col-2 border">Id</div>
+    <div class="col-2 border">ФИО</div>
+    <div class="col-2 border">Курс</div>
+    <div class="col-2 border">Дата рождения</div>
+    <div class="col-2 border">Alert</div>
+    <div class="col-2 border">Delete</div>
+    @foreach (var student in Model)
+    {
+        <div class="col-2 border">@student.Id</div>
+        <div class="col-2 border">@student.Name</div>
+        <div class="col-2 border">@student.Course</div>
+        <div class="col-2 border">@student.DateOfBirth</div>
+        <div class="col-2 border">
+            <button onclick="alertt('@student.Name');">
+                Alert Имя
+            </button>
+        </div>
+        <div class="col-2 border">
+            <button>
+                Delete name
+            </button>
+        </div>
+    }
+    
+</div>
+
+<form asp-action="Add" asp-controller="Student" class="mt-3">
+    <label for="Id">Id</label><input type="text" id="Id" name="Id" placeholder="Введите ID">
+    <label for="Name">Имя</label><input type="text" id="Name" name="Name">
+    <label for="Course">Курс</label><input type="text" id="Course" name="Course">
+    <label for="DateOfBirth">Дата рождения</label><input type="datetime" id="DateOfBirth" name="DateOfBirth">
+    
+        <input type="submit" id="Submit" name="Submit">
+    
+</form>
+
+<script type="text/javascript">
+    function alertt(text) {
+        alert(text);
+    }
+</script>
