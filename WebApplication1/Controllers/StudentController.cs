@@ -24,6 +24,7 @@ namespace WebApplication1.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
         public int GetFive()
         {
             return 5;

@@ -45,4 +45,17 @@
     function alertt(text) {
         alert(text);
     }
+
+    function ajaxCall() {
+        $.ajax({
+                type: 'GET',
+                url: '@Url.Action("GetFive", "Student")',
+                dataType: "json"
+        }).done(res => {
+            alert(res);
+        }).fail(error => {
+            alert('ошибка');
+        });
+
+    }
 </script>
