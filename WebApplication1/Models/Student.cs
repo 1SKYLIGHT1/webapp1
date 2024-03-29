@@ -47,7 +47,49 @@
                     Course = 3,
                     DateOfBirth = new DateTime(2004,6,8),
                     Id = 5
-                }
+                },
+                new Student()
+                {
+                    Name = "Зюганов В.С.",
+                    Course = 4,
+                    DateOfBirth = DateTime.Now.AddYears(-16).AddMonths(-3).AddDays(-6),
+                    Id = 6
+                },
+                new Student()
+                {
+                    Name = "Даванков Г.Л",
+                    Course = 5,
+                    DateOfBirth = DateTime.Now.AddYears(-16).AddMonths(-3).AddDays(-6),
+                    Id = 7
+                },
+                 new Student()
+                {
+                    Name = "Харитонов О.Г",
+                    Course = 2,
+                    DateOfBirth = DateTime.Now.AddYears(-16).AddMonths(-3).AddDays(-6),
+                    Id = 8
+                },
+                  new Student()
+                {
+                    Name = "Аргел Тал",
+                    Course = 1,
+                    DateOfBirth = DateTime.Now.AddYears(-20).AddMonths(-3).AddDays(-6),
+                    Id = 9
+                },
+                   new Student()
+                {
+                    Name = "Лоргар Аврелиан",
+                    Course = 4,
+                    DateOfBirth = DateTime.Now.AddYears(-17).AddMonths(-3).AddDays(-6),
+                    Id = 10
+                },
+                    new Student()
+                {
+                    Name = "Константин Вальдор",
+                    Course = 6 ,
+                    DateOfBirth = DateTime.Now.AddYears(-21).AddMonths(-3).AddDays(-6),
+                    Id = 11
+                },
             };
         }
     }
