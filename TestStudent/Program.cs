@@ -120,12 +120,7 @@ public class Student
             };
     }
 
-    internal bool StartsWith(string v)
-    {
-        throw new NotImplementedException();
-    }
 }
-
 
 public class StudentStorageService
 {
