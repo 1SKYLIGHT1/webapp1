@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Books
+﻿namespace Books
 {
     internal class BookStorageService
     {
@@ -54,6 +48,15 @@ namespace Books
         public Book GetMaxPriceBook()
         {
             return _books.MaxBy(b => b.Price);
+        }
+
+        public void SyntaxTest()
+        {
+            var aa = from book in _books
+                where book.Id == 1
+                where book.Author == ""
+                select book;
+
         }
     }
 }
