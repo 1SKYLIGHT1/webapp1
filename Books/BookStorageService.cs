@@ -24,11 +24,11 @@
             _books.RemoveAll(a => a.Id == bookId);
         }
 
-        public List<string> FilterBooks()
+        public List<Author> FilterBooks()
         {
-            return _books.Where(b => b.Author.ToUpper().StartsWith("Д"))
+            return _books.Where(b => b.Author.FirstName.ToUpper().StartsWith("Д"))
                 .Select(b => b.Author)
-                .Distinct()
+                .DistinctBy(b => b.LastName)
                 .ToList();
         }
 
@@ -54,7 +54,7 @@
         {
             var aa = from book in _books
                 where book.Id == 1
-                where book.Author == ""
+                where book.Author.FirstName == ""
                 select book;
 
         }
