@@ -16,7 +16,7 @@ namespace Books
 
         public int Price { get; set; }
 
-        public DateTime PublicationDate { get; set; } = DateTime.Now;
+        public DateTime PublicationDate { get; set; }
 
         public static List<Book> GetBookList()
         {
