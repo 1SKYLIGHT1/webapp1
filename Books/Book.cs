@@ -12,7 +12,7 @@ namespace Books
 
         public string Title { get; set; }
 
-        public string Author { get; set; }
+        public Author Author { get; set; }
 
         public int Price { get; set; }
 
@@ -26,7 +26,12 @@ namespace Books
             {
                 Id = 1,
                 Title = "Полёт Эйзенштейна",
-                Author = "Джеймс Сваллоу",
+                Author = new Author()
+                {
+                    FirstName = "Грэм",
+                    LastName = "Маккнилл",
+                    DateOfBirth = new DateTime(1989, 11, 19)
+                },
                 Price = 1500,
                 PublicationDate = new DateTime(2007,3,1)
             },
@@ -34,7 +39,12 @@ namespace Books
             {
                 Id = 2,
                 Title = "Восхождение Хоруса",
-                Author = "Дэн Абнетт",
+                Author = new Author()
+                {
+                    FirstName = "Аарон",
+                    LastName = "Ден-Бронский",
+                    DateOfBirth = new DateTime(2000, 10, 22)
+                },
                 Price = 2900,
                 PublicationDate = new DateTime(2006,4,2)
             },
@@ -42,7 +52,12 @@ namespace Books
             {
                 Id = 3,
                 Title = "Лживые Боги",
-                Author = "Грэм Макнилл",
+                Author = new Author()
+                {
+                    FirstName = "Дэн",
+                    LastName = "Абнетт",
+                    DateOfBirth = new DateTime(1969, 1, 19)
+                },
                 Price = 3500,
                 PublicationDate = new DateTime(2006,8,9)
             },
@@ -50,7 +65,12 @@ namespace Books
             {
                 Id = 4,
                 Title = "Инквизитор Эйзенхорн",
-                Author = "Дэн Абнетт",
+                Author = new Author()
+                {
+                    FirstName = "Аарон",
+                    LastName = "Ден-Бронский",
+                    DateOfBirth = new DateTime(2000, 10, 22)
+                },
                 Price = 900,
                 PublicationDate = new DateTime(2001,7,3)
             },
@@ -58,7 +78,12 @@ namespace Books
             {
                 Id = 5,
                 Title = "Инквизитор Рейвинор",
-                Author = "Дэн Абнетт",
+                Author = new Author()
+                {
+                    FirstName = "Грэм",
+                    LastName = "Маккнилл",
+                    DateOfBirth = new DateTime(1989, 11, 19)
+                },
                 Price = 1700,
                 PublicationDate = new DateTime(2005,9,15)
             },
@@ -66,7 +91,12 @@ namespace Books
             {
                 Id = 6,
                 Title = "Фулгрим",
-                Author = "Грэм Макнилл",
+                Author = new Author()
+                {
+                    FirstName = "Дэн",
+                    LastName = "Абнетт",
+                    DateOfBirth = new DateTime(1969, 1, 19)
+                },
                 Price = 2100,
                 PublicationDate = new DateTime(2008,11,19)
             },
@@ -74,7 +104,12 @@ namespace Books
             {
                 Id = 7,
                 Title = "Сожжение Просперо",
-                Author = "Дэн Абнетт",
+                Author = new Author()
+                {
+                    FirstName = "Аарон",
+                    LastName = "Ден-Бронский",
+                    DateOfBirth = new DateTime(2000, 10, 22)
+                },
                 Price = 3200,
                 PublicationDate = new DateTime(2012,3,12)
             },
@@ -82,7 +117,12 @@ namespace Books
             {
                 Id = 8,
                 Title = "Немезида",
-                Author = "Джеймс Сваллоу",
+                Author = new Author()
+                {
+                    FirstName = "Грэм",
+                    LastName = "Маккнилл",
+                    DateOfBirth = new DateTime(1989, 11, 19)
+                },
                 Price = 1100,
                 PublicationDate = new DateTime(2010,12,12)
             },
@@ -90,7 +130,12 @@ namespace Books
             {
                 Id = 9,
                 Title = "Преторианец Терры",
-                Author = "Джон Френч",
+                Author = new Author()
+                {
+                    FirstName = "Макс",
+                    LastName = "Свэллоу",
+                    DateOfBirth = new DateTime(2003, 01, 1)
+                },
                 Price = 1000,
                 PublicationDate = new DateTime(2015,6,4)
             },
@@ -98,7 +143,12 @@ namespace Books
             {
                 Id = 10,
                 Title = "Император человечества",
-                Author = "Аарон Дембски-Боуден",
+                Author = new Author()
+                {
+                    FirstName = "Джош",
+                    LastName = "Рейнольдс",
+                    DateOfBirth = new DateTime(1993, 6, 30)
+                },
                 Price = 4000,
                 PublicationDate = new DateTime(2016,6,17)
             },

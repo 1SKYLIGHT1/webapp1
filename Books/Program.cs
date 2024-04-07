@@ -8,8 +8,9 @@ var prices = books.FilterBooksPrices();
 
 foreach (var author in authors)
 {
-    Console.WriteLine(author);
+    Console.WriteLine(author.AuthorInfo);
 }
+
 
 foreach (var price in prices)
 {
