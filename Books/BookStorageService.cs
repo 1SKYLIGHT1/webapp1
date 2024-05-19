@@ -1,62 +1,70 @@
-﻿namespace Books
+﻿using Books.Mappers;
+using DbData.DbModels;
+
+namespace Books
 {
-    internal class BookStorageService
+    public class BookStorageService
     {
-        private List<Book> _books;
+        private LibraryContext _libraryContext;
+
+        public BookStorageService(LibraryContext libraryContext)
+        {
+            _libraryContext = libraryContext;
+        }
 
         public List<Book> GetBookList()
         {
-            return _books;
+            return _libraryContext.Book.Select(s => s.ToModel()).ToList();
         }
 
-        public BookStorageService()
+        public void AddBook(Book book)
         {
-            _books = Book.GetBookList();
+            _libraryContext.Book.Add(book.ToEntity());
+            _libraryContext.SaveChanges();
         }
-
-        public void AddStudent(Book book)
+        
+        public void DeleteBook(int bookId)
         {
-            _books.Add(book);
+            var dbBook = _libraryContext.Book.Where(w => w.Id  == bookId).FirstOrDefault();
+            _libraryContext.Book.Remove(dbBook);
+            _libraryContext.SaveChanges();
         }
-
-        public void DeleteStudent(int bookId)
-        {
-            _books.RemoveAll(a => a.Id == bookId);
-        }
-
+        
         public List<Author> FilterBooks()
         {
-            return _books.Where(b => b.Author.FirstName.ToUpper().StartsWith("Д"))
+            return _libraryContext.Book.Where(b => b.Author.FirstName.ToUpper().StartsWith("Д"))
                 .Select(b => b.Author)
                 .DistinctBy(b => b.LastName)
+                .Select(s => s.ToModel())
                 .ToList();
         }
-
+        
         public List<Book> FilterBooksPrices()
         {
-            return _books.Where(b => b.Price > 2500)
-                //.Sum(b => b.Price)
+            return _libraryContext.Book.Where(b => b.Price > 2500)
+                //.Sum(b => b.Price).
+                .Select(s => s.ToModel())
                 .ToList();
         }
-
+        
         public int GetSumBookPrices()
         {
-            return _books.Where(b => b.Price > 2500)
+            return _libraryContext.Book.Where(b => b.Price > 2500)
                 .Sum(b => b.Price);
         }
-
+        
         public Book GetMaxPriceBook()
         {
-            return _books.MaxBy(b => b.Price);
+            return _libraryContext.Book.MaxBy(b => b.Price).ToModel();
         }
-
+        
         public void SyntaxTest()
         {
-            var aa = from book in _books
+            var aa = from book in _libraryContext.Book
                 where book.Id == 1
                 where book.Author.FirstName == ""
                 select book;
-
+        
         }
     }
 }

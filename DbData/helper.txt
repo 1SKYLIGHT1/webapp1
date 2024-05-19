@@ -1,0 +1,6 @@
+﻿//в Package Manager Console. Выбери проект DpData!!!
+// -NoPluralize убирает множественное число в названиях сущностей
+//(localdb)\MSSQLLocalDB - поменять сервер. -force - с перезаписью
+
+Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=Library;Trusted_Connection=True;"                   Microsoft.EntityFrameworkCore.SqlServer -OutputDir DbModels -force -Project DbData -NoPluralize -NoOnConfiguring
+Scaffold-DbContext "Server=WOOF\WOOFSQLSERVER;Database=Library;User ID=sa;Password=kbghbrjy;TrustServerCertificate=True;"                   Microsoft.EntityFrameworkCore.SqlServer -OutputDir DbModels -force -Project DbData -NoPluralize -NoOnConfiguring
