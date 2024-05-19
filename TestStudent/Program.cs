@@ -1,16 +1,43 @@
-﻿namespace WebApplication1.Models
+﻿
+Console.WriteLine("hello world");
+
+var student = new StudentStorageService();
+
+var result1 = student.FilterStudent();
+
+var result2 = student.LINQFilterStudent();
+
+var result3 = student.PLINQFilterStudent();
+
+foreach (var item in result1)
 {
-    public class Student
+    Console.WriteLine(item.Name);
+}
+
+
+foreach (var item in result2)
+{
+    Console.WriteLine(item.Name);
+}
+
+
+
+foreach (var item in result3)
+{
+    Console.WriteLine(item);
+}
+
+public class Student
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public int Course { get; set; }
+
+    public DateTime DateOfBirth { get; set; }
+
+    public static List<Student> GetStudentList()
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int Course { get; set; }
-
-        public DateTime DateOfBirth { get; set; }
-
-        public static List<Student> GetStudentList()
-        {
-            return new List<Student>()
+        return new List<Student>()
             {
                 new Student()
                 {
@@ -91,33 +118,60 @@
                     Id = 11
                 },
             };
-        }
     }
 
-    public class StudentStorageService
+}
+
+public class StudentStorageService
+{
+    private List<Student> _students;
+
+    public StudentStorageService()
     {
-        private  List<Student> _students;
+        _students = Student.GetStudentList();
+    }
 
-        public StudentStorageService()
+    public List<Student> GetStudentList()
+    {
+        return _students;
+    }
+
+    public void AddStudent(Student student)
+    {
+        _students.Add(student);
+    }
+
+    public void DeleteStudent(int studentId)
+    {
+        _students.RemoveAll(a => a.Id == studentId);
+    }
+
+    public List<Student> FilterStudent()
+    {
+        var result = new List<Student>();
+
+        foreach (var student in _students)
         {
-            _students = Student.GetStudentList();
+            if (student.Name.ToUpper().StartsWith("А"))
+            {
+                result.Add(student);
+            }
         }
+        return result;
+    }
 
-        public List<Student> GetStudentList()
-        {
-            return _students;
-        }
-
-        public void AddStudent(Student student)
-        {
-            _students.Add(student);
-        }
-
-        public void DeleteStudent(int studentId)
-        {
-            _students.RemoveAll(a => a.Id == studentId);
-        }
-
-        
+    public List<Student> LINQFilterStudent()
+    {
+        return _students.Where(student => student.Name.ToUpper().StartsWith("Л") && student.DateOfBirth > new DateTime(2004, 6, 8)).ToList();
+    }
+    public List<string> PLINQFilterStudent()
+    {
+        return _students
+            .Where(student => student.Course > 3)
+            .OrderBy(s => s.Name)
+            .Skip(2)
+            .Select(s => s.Name)
+            .Union(new List<string> { "12", "13" })
+            .ToList();
     }
 }

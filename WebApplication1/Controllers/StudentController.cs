@@ -23,11 +23,20 @@ namespace WebApplication1.Controllers
 
             return RedirectToAction("Index");
         }
+        //[HttpGet]
+        //public int GetFive()
+        //{
+        //    return 5;
+        //}
 
         [HttpGet]
-        public int GetFive()
+        public IActionResult Delete(int studentId) 
         {
-            return 5;
+
+            _studentStorageService.DeleteStudent(studentId);
+
+            return RedirectToAction("Index");
         }
+
     }
 }

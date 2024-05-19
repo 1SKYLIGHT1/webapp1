@@ -23,7 +23,7 @@
             </button>
         </div>
         <div class="col-2 border">
-            <button>
+            <button onclick="exampleAjax('@student.Id')">
                 Delete name
             </button>
         </div>
@@ -45,17 +45,25 @@
     function alertt(text) {
         alert(text);
     }
-
-    function ajaxCall() {
-        $.ajax({
-                type: 'GET',
-                url: '@Url.Action("GetFive", "Student")',
-                dataType: "json"
-        }).done(res => {
-            alert(res);
-        }).fail(error => {
-            alert('ошибка');
-        });
-
-    }
 </script>
+
+<script> 
+    function exampleAjax(id) {
+        $.ajax({
+            url: "@Url.Action("Delete", "Stude1nt")?studentId=" + id,        //"/Student/Delete?studentId="+id,
+            type: "GET",
+            datatype: "json",
+            success: function (data) {
+                console.log('successfully')
+                console.log(data)
+                window.location.reload()
+            },
+            fail: function (jqXHR, textStatus, errorThrown) {
+                // Обработать ошибку
+                console.log("AJAX request failed: " + textStatus)
+            }
+
+        });
+    }
+        
+    </script>
